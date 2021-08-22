@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from "react-router-dom";
 
-import NavBar from './Components/NavBar/Sidebar';
+import NavBar from './Components/NavBar/Navbar';
 
 import Home from './Components/Employee/Home';
 import AddEmployee from './Components/Employee/AddEmployee';
@@ -11,9 +11,7 @@ import GetSpecific from './Components/Employee/GetSpecific';
 
 
 import CreateAttendance from './Components/CreateAttendance';
-/*import CreateRecord from './Components/CreateRecord';
-import EditRecord from './Components/EditRecord';
-import RecordHome from './Components/RecordHome';*/
+
 import EmpAttend from './Components/EmpAttend';
 import SendEmail from './Components/SendEmail';
 
@@ -28,12 +26,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-import Footer from './Components/Footer/Footer';
+
 import AttendHome from './Components/AttendHome';
 
 export default class App extends Component {
   render() {
     return (
+      
       <BrowserRouter>
 
         <NavBar />
@@ -80,7 +79,7 @@ export default class App extends Component {
        
         </div>
        
-        <Footer/>
+      
       </BrowserRouter>
       
     )
