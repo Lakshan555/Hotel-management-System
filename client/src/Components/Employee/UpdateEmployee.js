@@ -4,13 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 
-const invoiceRegx = RegExp(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/gm);
-const formValid = formErrors =>{
-    let valid = true;
-    Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
-    });
-    return valid;
-};
+
 export default class UpdateEmployee extends Component {
     constructor(props) {
         super(props);
@@ -18,50 +12,15 @@ export default class UpdateEmployee extends Component {
             name: "",
             email: "",
             nic: "",
-            mobileNo: Number,
+            mobileNo: "",
             designation: "",
-            department: "",
-
-            formErrors:{
-                name:"",
-                email: "",
-                nic: "",
-                mobileNo: Number,
-                designation: "",
-                department: "",
-                
-            }
+            department: ""
 
         }
     }
 
     handleInputChange = (e) => {
- 
         const { name, value } = e.target;
-        let formErrors = this.state.formErrors;
-        switch(name){
-            case "name":
-            formErrors.name=
-            value.length < 5
-            ?"Minimum charactor length must be 5"
-            :"";
-            break;
-            case "email":
-            formErrors.email = invoiceRegx.test(value)
-            ? ""
-            : "Enter a valid email";
-            break;
-            case "mobileNo":
-            formErrors.mobileNo =
-            value.length > 10 || value.length > 10
-            ? "Enter a vlid mobile numbe"
-            :"";
-            break;
-            default:
-            break;
-        }
-        this.setState({formErrors,[name]: value},()=> console.log(this.state));
-
         this.setState({
             ...this.state,
             [name]: value
@@ -71,8 +30,6 @@ export default class UpdateEmployee extends Component {
     onSubmit = (e) => {
 
         e.preventDefault();
-        if(formValid(this.state.formErrors)){
-       
         const id = this.props.match.params.id;
         const { name, email, nic, mobileNo, designation, department } = this.state;
 
@@ -96,18 +53,15 @@ export default class UpdateEmployee extends Component {
                         name: "",
                         email: "",
                         nic: "",
-                        mobileNo:Number,
+                        mobileNo: "",
                         designation: "",
                         department: ""
                     }
                 )
             };
         });
-    }
-    else
-    alert("PLEASE ENTER DETAILS CORRECTLY!");
     };
-    componentDidMount(){
+    componentDidMount() {
         const id = this.props.match.params.id;
         axios.get(`http://localhost:8000/employee/${id}`).then((res) => {
             if (res.data.success) {
@@ -118,118 +72,118 @@ export default class UpdateEmployee extends Component {
                     mobileNo: res.data.employee.mobileNo,
                     designation: res.data.employee.designation,
                     department: res.data.employee.department,
-                   
                 });
                 console.log(this.state.employee);
             }
         })
     }
 
+
+
+
     render() {
         return (
             <div className="container containerTop">
             <div className="row">
-              <div className="col position-relative link">
-                <p><Link to="/get_Emp">Employee Management</Link> {'>'} Update Employee</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-9 position-relative">
-                <h2>Update Employee</h2>
-                < ToastContainer />
-              </div>
-              <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
-            </div>                  
-                <div className="row">
-                    <div className="col-3"/>
-                    <div className="col-6 shadowBox" >
-                        <form className="needs-validation" noValidate>
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Employee Name</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="name"
-                                    placeholder="Enter Employee Name"
-                                    value={this.state.name}
-                                    onChange={this.handleInputChange}
-                                    required />
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Email</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="email"
-                                    placeholder="Enter email"
-                                    value={this.state.email}
-                                    onChange={this.handleInputChange} 
-                                    required/>
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>NIC</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="nic"
-                                    placeholder="Enter NIC"
-                                    value={this.state.nic}
-                                    onChange={this.handleInputChange} 
-                                    required/>
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Mobile No</label>
-                                <input type="text"
-                                    maxLength= "10"
-                                    minLength = "10"
-                                    className="form-control"
-                                    name="mobileNo"
-                                    placeholder="mobileNo"
-                                    value={this.state.mobileNo}
-                                    onChange={this.handleInputChange} 
-                                    required/>
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Designation</label>
-                                <input type="text"
-                                    className="form-control"
-                                    name="designation"
-                                    placeholder="Enter Payment Date"
-                                    value={this.state.designation}
-                                    onChange={this.handleInputChange} 
-                                    required/>
-                            </div>
-
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Department</label>
-                                <select type="text"
-                                    className="form-control"
-                                    name="department"
-                                    placeholder="Select Department"
-                                    
-                                    value={this.state.department}
-                                    onChange={this.handleInputChange} >
-                                        <option selected>{this.state.department}</option>
-                                        <option values="Marketing_Dep">Marketing Dep</option>
-                                        <option values="Arrangments_Dep">Arrangments Dep</option>
-                                        <option values="Finance_Dep">Finance Dep</option>
-                                        <option values="Kitchen_Dep">Kitchen Dep</option>
-                                        </select>
-                               
-                            </div>
-
-                            
-                            <center>
-                                <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Update</button>
-                                </div>
-                            </center>
-                        </form>
-                    </div>
-                    <div className="col-3"/>
+                <div className="col position-relative link">
+                    <p><Link to="/get_Emp">Employee Management</Link> {'>'} Update Employee</p>
                 </div>
             </div>
+            <div className="row">
+                <div className="col-9 position-relative">
+                    <h2>Update Employee</h2>
+                    < ToastContainer />
+                </div>
+                <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+            </div>
+            <div className="row">
+                <div className="col-3" />
+                <div className="col-6 shadowBox" >
+                    <form className="needs-validation" noValidate>
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Employee Name</label>
+                            <input type="text"
+                                className="form-control"
+                                name="name"
+                                placeholder="Enter Employee Name"
+                                value={this.state.name}
+                                onChange={this.handleInputChange}
+                                required />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Email</label>
+                            <input type="text"
+                                className="form-control"
+                                name="email"
+                                placeholder="Enter email"
+                                value={this.state.email}
+                                onChange={this.handleInputChange}
+                                required />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>NIC</label>
+                            <input type="text"
+                                className="form-control"
+                                name="nic"
+                                placeholder="Enter NIC"
+                                value={this.state.nic}
+                                onChange={this.handleInputChange}
+                                required />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Mobile No</label>
+                            <input type="text"
+                                maxLength="10"
+                                minLength="10"
+                                className="form-control"
+                                name="mobileNo"
+                                placeholder="mobileNo"
+                                value={this.state.mobileNo}
+                                onChange={this.handleInputChange}
+                                required />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Designation</label>
+                            <input type="text"
+                                className="form-control"
+                                name="designation"
+                                placeholder="Enter Payment Date"
+                                value={this.state.designation}
+                                onChange={this.handleInputChange}
+                                required />
+                        </div>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Department</label>
+                            <select type="text"
+                                className="form-control"
+                                name="department"
+                                placeholder="Select Department"
+
+                                value={this.state.department}
+                                onChange={this.handleInputChange} >
+                                <option selected>{this.state.department}</option>
+                                <option values="Marketing_Dep">Marketing Dep</option>
+                                <option values="Arrangments_Dep">Arrangments Dep</option>
+                                <option values="Finance_Dep">Finance Dep</option>
+                                <option values="Kitchen_Dep">Kitchen Dep</option>
+                            </select>
+                        </div>
+
+                        <center>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Update</button>
+                            </div>
+                        </center>
+                    </form>
+                </div>
+                <div className="col-3" />
+            </div>
+        </div>
         )
     }
 }
