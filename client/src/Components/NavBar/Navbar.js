@@ -30,12 +30,12 @@ function Navbar() {
          <nav className='navbar2'>
         <div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          <img className="logo-image" style={{ maxWidth: '100px', marginRight:'500px' }} src="../images/logo3.png" />
+          <img className="logo-image" style={{ maxWidth: '60px', marginRight:'500px' }} src="../images/newlogo.png" />
           
            
           </Link>
           <h2>HOTELOPS</h2>
-          <p className='slogen-p'>Service With a smille</p>
+         
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
@@ -50,9 +50,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
         
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
+         
 
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>

@@ -127,7 +127,7 @@ export default class Home extends Component {
             </div>
             <div className="row">
               <div className="col-2 buttons">
-                <Link to="/attend" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
+                <Link to="/attend_home" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
               </div>
               <div className="col-2 buttons">
                 <a href="/emp_add" type="button" class="btn btn-success buttonStyle"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</a><br /><br />
