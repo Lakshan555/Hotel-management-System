@@ -8,19 +8,19 @@
 
 .link a {
     text-decoration: none;
-    color: rgb(37, 37, 37);
+    color: #000;
 }
 
 .link a:hover {
-    color: rgb(0, 202, 101);
+    color: #049aef;
 }
 
 .link p {
-    color: rgb(37, 37, 37);
+    color: #000;
 }
 
 .hr {
-    background-color: #2f9101e7;
+    background-color: #049aef;
     padding-top: 5px;
     margin-bottom: 30px;
 }
@@ -87,8 +87,6 @@ table tr {
     color: #fff;
 }
 
-
-
 .buttons {
     margin-top: 20px;
 }
@@ -107,3 +105,34 @@ table tr {
     
 }
 
+.buttonStyle2{
+    border: 2px solid #049aef;
+    color: #049aef;
+    border-radius: 20px;
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+
+.buttonStyle2:hover{
+    background-color: #049aef;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}

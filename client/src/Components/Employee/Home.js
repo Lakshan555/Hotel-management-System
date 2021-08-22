@@ -130,10 +130,10 @@ export default class Home extends Component {
                 <Link to="/attend_home" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
               </div>
               <div className="col-2 buttons">
-                <a href="/emp_add" type="button" class="btn btn-success buttonStyle"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</a><br /><br />
+                <Link to="/emp_add" type="button" class="btn btn-success buttonStyle"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</Link><br /><br />
               </div>
               <div className="col-3 buttons">
-                <a href="#" type="button" class="btn btn-outline-success buttonStyle" ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</a><br /><br />
+                <Link onClick={()=>this.exportPDF()} type="button" class="btn buttonStyle2" ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
               </div>
               <div className="col-2" />
               <div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
