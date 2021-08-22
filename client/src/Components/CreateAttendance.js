@@ -92,7 +92,7 @@ export default class CreateRecord extends Component{
                 className="form-control"
                 name="aTime"
                 value={this.state.aTime}
-                onChange={this.handleInputChange} readOnly/>
+                onChange={this.handleInputChange} />
                 </div>
 
                 <div className="form-group" style={{marginBottom:'15px'}}>
