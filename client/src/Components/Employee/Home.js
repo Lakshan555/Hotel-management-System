@@ -137,7 +137,9 @@ export default class Home extends Component {
               </div>
               <div className="col-2" />
               <div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
+
                 <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search an Employee" name="searchQuery" onChange={this.handleSearchArea} />
+
               </div>
             </div>
             <div className="shadowBox">
@@ -166,11 +168,12 @@ export default class Home extends Component {
                           <td>{employee.mobileNo}</td>
                           <td>{employee.email}</td>
                           <td>{employee.designation}</td>
+
                           <td>
                             <Link to={`/emp_update/${employee._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit
                             </Link>&nbsp;&nbsp;
-                            <Link href="#" type="button" class="btn btn-danger" onClick={()=>this.onDelete(employee._id)}>
+                            <Link to="#" type="button" class="btn btn-danger" onClick={()=>this.onDelete(employee._id)}>
                               <i className="far fa-trash-alt"></i>&nbsp;Delete
                             </Link>
                           </td>
