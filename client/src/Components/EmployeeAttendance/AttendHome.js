@@ -98,12 +98,28 @@ export default class AttendHome extends Component {
     });
   }
 
+
   onDelete = (id) => {
-    axios.delete(`http://localhost:8000/attends/delete/${id}`).then((res) => {
-      alert("Record Deleted");
-      this.retrieveAttendence();
+    swl({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this file!",
+      icon: "warning",
+      buttons: ["Cancel","Delete"],
+      dangerMode: true,
     })
+    .then((willDelete) => {
+      if (willDelete) {
+        axios.delete(`http://localhost:8000/attends/delete/${id}`).then((res) => {
+  
+              swl('Guide successfully Deleted',{
+                icon: "success",
+              });
+              this.retrieveAttendence();
+          })                
+      }
+    });
   }
+ 
 
   filterData(attends, searchKey) {
     const result = attends.filter((attends) =>
