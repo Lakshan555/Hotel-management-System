@@ -12,10 +12,9 @@ export default class UpdateEmployee extends Component {
             name: "",
             email: "",
             nic: "",
-            mobileNo: "",
+            mobileNo: Number,
             designation: "",
             department: ""
-
         }
     }
 
@@ -53,7 +52,7 @@ export default class UpdateEmployee extends Component {
                         name: "",
                         email: "",
                         nic: "",
-                        mobileNo: "",
+                        mobileNo: Number,
                         designation: "",
                         department: ""
                     }
