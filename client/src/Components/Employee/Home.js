@@ -167,7 +167,7 @@ export default class Home extends Component {
                           <td>{employee.email}</td>
                           <td>{employee.department}</td>
                           <td>
-                            <Link href="" type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
+                            <Link to={`/emp_update/${employee._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit
                             </Link>&nbsp;&nbsp;
                             <Link href="#" type="button" class="btn btn-danger" onClick={()=>this.onDelete(employee._id)}>

@@ -27,31 +27,12 @@ function Navbar() {
 
   return (
     <>
-         <nav className='navbar2'>
-        <div className='navbar-container'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          <img className="logo-image" style={{ maxWidth: '60px', marginRight:'500px' }} src="../images/newlogo.png" />
-          
-           
-          </Link>
-          <h2>HOTELOPS</h2>
-         
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-          </div>
-
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            
-          
-          </ul>
-        
-        </div>
-      </nav>
+       
       <nav className='navbar'>
         <div className='navbar-container'>
         
          
-
+        <img className="logo-image" style={{ maxWidth: '80px', marginRight:'320px' }} src="../images/newlogo.png" />
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
