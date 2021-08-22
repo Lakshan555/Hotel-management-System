@@ -1,170 +1,189 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import '../styles.css'
-import {jsPDF} from 'jspdf'
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import swl from 'sweetalert'
+import { jsPDF } from 'jspdf'
 import 'jspdf-autotable'
 import './estyle.css';
 
 
 export default class Home extends Component {
-constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state={
-        employee:[]
+    this.state = {
+      employee: []
     };
-}
+  }
 
-//export PDF
+  //export PDF
 
-exportPDF = () => {
-  const unit = "pt";
-  const size = "A3"; // Use A1, A2, A3 or A4
+  exportPDF = () => {
+    const unit = "pt";
+    const size = "A3"; // Use A1, A2, A3 or A4
 
-  const marginLeft = 40;
-  const doc = new jsPDF('landscape', unit, size);
+    const marginLeft = 40;
+    const doc = new jsPDF('landscape', unit, size);
 
-  doc.setFontSize(15);
+    doc.setFontSize(15);
 
-  const title = "Employee Details";
-  const headers = [['Name','Email','NIC', 'MobileNo', 'Designation','Department']];
+    const title = "Employee Details";
+    const headers = [['Name', 'Email', 'NIC', 'MobileNo', 'Designation', 'Department']];
 
-  const data = this.state.employee.map(elt=> [elt.name, elt.email,elt.nic,elt.mobileNo,elt.designation,elt.department ]);
+    const data = this.state.employee.map(elt => [elt.name, elt.email, elt.nic, elt.mobileNo, elt.designation, elt.department]);
 
-  let content = {
-    startY: 50,
-    head: headers,
-    body: data
-  };
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
 
-  doc.text(title, marginLeft, 40);
-  doc.autoTable(content);
-  doc.save("Employee.pdf")
-}
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("Employee.pdf")
+  }
 
 
-componentDidMount(){
+  componentDidMount() {
     this.retrieveEmployee();
-}
+  }
 
-retrieveEmployee(){
-    axios.get(`http://localhost:8000/employee`).then(res=>{
-    if(res.data.success){
+  retrieveEmployee() {
+    axios.get(`http://localhost:8000/employee`).then(res => {
+      if (res.data.success) {
         this.setState({
-            employee:res.data.existingEmployee
+          employee: res.data.existingEmployee
         });
         console.log(this.state.employee);
 
-    }
-       
+      }
+
     });
-}
+  }
 
-onDelete = (id) => {
-  axios.delete(`http://localhost:8000/employee/delete/${id}`).then((res) => {
-    alert("Deleted Successfully");
-    this.retrieveEmployee();
-  })
-}
+  //delete function with confirmation
+  onDelete = (id) => {
+    swl({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this file!",
+      icon: "warning",
+      buttons: ["Cancel", "Delete"],
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios.delete(`http://localhost:8000/employee/delete/${id}`).then((res) => {
 
-filterData(employee,searchKey){
-  const result=employee.filter((employee)=>
-  employee.name.toLowerCase().includes(searchKey)||
-  employee.email.toLowerCase().includes(searchKey)||
-  employee.designation.toLowerCase().includes(searchKey)
-)
-  this.setState({employee: result})
-}
+            swl('Employee successfully Deleted', {
+              icon: "success",
+            });
+            this.retrieveEmployee();
+          })
+        }
+      });
+  }
 
 
 
-handleSearchArea=(e)=>{
-  const searchKey=e.currentTarget.value;
-  axios.get("http://localhost:8000/employee").then(res =>{
-    if(res.data.success){
-      this.filterData(res.data.existingEmployee,searchKey)
-    }
-  });
-}
+
+  filterData(employee, searchKey) {
+    const result = employee.filter((employee) =>
+      employee.name.toLowerCase().includes(searchKey) ||
+      employee.email.toLowerCase().includes(searchKey) ||
+      employee.designation.toLowerCase().includes(searchKey)
+    )
+    this.setState({ employee: result })
+  }
+
+
+  handleSearchArea = (e) => {
+    const searchKey = e.currentTarget.value;
+    axios.get("http://localhost:8000/employee").then(res => {
+      if (res.data.success) {
+        this.filterData(res.data.existingEmployee, searchKey)
+      }
+    });
+  }
+  
 
   render() {
     return (
-      <div className="container" >
+      <div className="container containerTop">
         <div className="row">
-          <div className="col-lg-9 mt-2 mb-2">
-
+          <div className="col-12">
+            <div className="row">
+              <div className="col position-relative link">
+                <p>Employee Management</p>
+              </div>
             </div>
-            <div className="col-lg-3 mt-2 mb-2 ">
-              <input
-              className="form-control"
-              type="search"
-              placeholder="🔍 Search"
-              name="searchQuery"
-              onChange={this.handleSearchArea}></input>
-
+            <div className="row">
+              <div className="col-9 position-relative">
+                <h2>Employee</h2>
+                < ToastContainer />
+              </div>
+              <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
             </div>
-            <div className='col-md-4'>
-						<Link
-							className='btn btn-primary w-100'
-							to="/attend_home">
-						  Attendence
-						</Link>
-					</div>
-        </div> 
-            <div className="py-4">
-            <h1>Employee Dashbord</h1>
-            <table class=" table table-striped borde" >
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">NIC</th>
-                    <th scope="col">MobileNo</th>
-                    <th scope="col">Designation</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Action</th>
-                    
-                    </tr>
-                </thead>
-                <tbody>
-                   {this.state.employee.map((employee,index)=> (
-                      <tr key={index}>
-                          <th scope="row">EMP{index + 1}</th>
-                          <td>
-                             <a href={`/employee/${employee._id}`} style={{textDecoration:'none'}}>
-                              {employee.name}
-                            </a>
-                            </td>
-                          <td>{employee.email}</td>
+            <div className="row">
+              <div className="col-2 buttons">
+                <Link to="/attend" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
+              </div>
+              <div className="col-2 buttons">
+                <a href="/emp_add" type="button" class="btn btn-success buttonStyle"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</a><br /><br />
+              </div>
+              <div className="col-3 buttons">
+                <a href="#" type="button" class="btn btn-outline-success buttonStyle" ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</a><br /><br />
+              </div>
+              <div className="col-2" />
+              <div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
+                <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search an attendance" name="searchQuery" onChange={this.handleSearchArea} />
+              </div>
+            </div>
+            <div className="shadowBox">
+              <div className="row">
+                <div className="col-12 ">
+                  <table class="table table-hover">
+                    <thead className="table table-dark">
+                      <tr>
+                        <th scope="col">Emp No</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">NIC</th>
+                        <th scope="col">Contact number</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    {this.state.employee.map((employee, index) => (
+                      <tbody>
+                        <tr>
+                          <th scope="row"><a href="" style={{ textDecoration: 'none', color: '#000' }}></a>EMP{index + 1}</th>
+                          <td>{employee.department}</td>
+                          <td>{employee.name}</td>
                           <td>{employee.nic}</td>
                           <td>{employee.mobileNo}</td>
-                          <td>{employee.designation}</td>
+                          <td>{employee.email}</td>
                           <td>{employee.department}</td>
-                          
                           <td>
-                               
-                            <Link  className="btn btn-outline-primary" to={`/emp_update/${employee._id}`}>
-                              <i className="fas fa-edit"></i> &nbsp;Update
-                            
+                            <Link href="" type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
+                              <i class="far fa-edit"></i>&nbsp;Edit
+                            </Link>&nbsp;&nbsp;
+                            <Link href="#" type="button" class="btn btn-danger" onClick={()=>this.onDelete(employee._id)}>
+                              <i className="far fa-trash-alt"></i>&nbsp;Delete
                             </Link>
-                            &nbsp;
-                            <Link className="btn btn-danger" onClick={()=>this.onDelete(employee._id)}><i className="far fa-trash-alt"></i>&nbsp;Delete</Link>
-                                
-                            </td>
-                      </tr>
+                          </td>
+                        </tr>
+                      </tbody>
                     ))}
-
-                </tbody>
-                </table>
-                <Link to="emp_add" className="btn btn-warning"><i className="fas fa-user-plus"></i>&nbsp;Add Employee</Link>&nbsp;
-                <Link onClick={()=>this.exportPDF()} to="#" className="btn btn-success"><i class="fas fa-download"></i>&nbsp;Download Report</Link>
-                
-                
- 
+                  </table>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     )
   }
 }
