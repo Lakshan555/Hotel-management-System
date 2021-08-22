@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import {toast} from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const invoiceRegx = RegExp(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/gm);
 const formValid = formErrors =>{
@@ -123,23 +125,24 @@ export default class UpdateEmployee extends Component {
         })
     }
 
-
-
-
-
-
     render() {
         return (
-            <div className="container">
-                <div className="row ">
-                    <div className="col-6">
-                        <img className="order_img" src="../images/eupdate.png" />
-                    </div>
+            <div className="container containerTop">
+            <div className="row">
+              <div className="col position-relative link">
+                <p><Link to="/get_Emp">Employee Management</Link> {'>'} Update Employee</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-9 position-relative">
+                <h2>Update Employee</h2>
+                < ToastContainer />
+              </div>
+              <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+            </div>                  
+                <div className="row">
+                    <div className="col-3"/>
                     <div className="col-6 shadowBox" >
-                        <center>
-
-                            <h1 className="h3 mb-3 font-weight-normal">Update Employee</h1>
-                        </center>
                         <form className="needs-validation" noValidate>
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Employee Name</label>
@@ -224,6 +227,7 @@ export default class UpdateEmployee extends Component {
                             </center>
                         </form>
                     </div>
+                    <div className="col-3"/>
                 </div>
             </div>
         )
