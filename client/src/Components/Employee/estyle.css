@@ -1,14 +1,109 @@
-.tname{
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
-    margin-Top:'440px';
 
+.containerTop {
+    margin-top: 60px;
+    padding-bottom: 50px;
 }
 
-.row{
+.link a {
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+}
 
+.link a:hover {
+    color: rgb(0, 202, 101);
+}
+
+.link p {
+    color: rgb(37, 37, 37);
+}
+
+.hr {
+    background-color: #2f9101e7;
     padding-top: 5px;
+    margin-bottom: 30px;
 }
-body{
-    background-image: url(./pattafade.jpg);
+/* #2e86c1 */
+h1, h2, h3 {
+    font-family: 'Open Sans', sans-serif;
+    color: #38B000;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+
+.shadowBox {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.9;
+    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+    -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+}
+
+.shadowBoxForm {
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: #fff;
+    opacity: 0.9;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Employee Home */
+
+.search {
+    margin-top: 10px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.search input {
+    height: 45px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-indent: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 15px;
+    left: 25px
+}
+
+
+table tr {
+    text-align: center;
+    justify-content: center;
+}
+
+.table-green tr{
+    background-color: #38B000;
+    color: #fff;
+}
+
+
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttonStyle{
+    border-radius: 20px;
+    text-align: center;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    font-size: 18px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 10px;
+    
 }
 

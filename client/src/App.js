@@ -31,6 +31,8 @@ import './App.css';
 import Footer from './Components/Footer/Footer';
 import AttendHome from './Components/AttendHome';
 
+
+
 export default class App extends Component {
   render() {
     return (
@@ -75,6 +77,7 @@ export default class App extends Component {
             <UpdateSupplierOrder />
           </Route>
           <Route path="/attend_home" component={AttendHome}></Route>
+
 
 
        

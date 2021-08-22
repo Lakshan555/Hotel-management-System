@@ -121,10 +121,7 @@ export default class AddEmployee extends Component {
         return (
             <div className="container">
                 <div className="row ">
-                    <div className="col-6">
-                        <img className="add_img" src="../images/E3.png" />
-                    </div>
-
+                    <div className="col-3"/>
                     <div className="col-6 shadowBox" >
                         <center>
                             <h1 className="h3 mb-3 font-weight-normal">ADD New Employee</h1>
@@ -223,6 +220,7 @@ export default class AddEmployee extends Component {
                             </center>
                         </form>
                     </div>
+                    <div className="col-3"/>
                 </div>
             </div>
 
