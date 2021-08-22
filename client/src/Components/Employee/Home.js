@@ -146,7 +146,7 @@ export default class Home extends Component {
               <div className="row">
                 <div className="col-12 ">
                   <table class="table table-hover">
-                    <thead className="table table-dark">
+                    <thead className="table-primary">
                       <tr>
                         <th scope="col">Emp No</th>
                         <th scope="col">Employee Name</th>
