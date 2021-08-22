@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {toast} from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const invoiceRegx = RegExp(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/gm);
-const formValid = formErrors =>{
+const formValid = formErrors => {
     let valid = true;
-    Object.values(formErrors).forEach(val => {val.length > 0 && (valid = false);
+    Object.values(formErrors).forEach(val => {
+        val.length > 0 && (valid = false);
     });
     return valid;
 };
@@ -20,48 +23,48 @@ export default class AddEmployee extends Component {
             mobileNo: Number,
             designation: "",
             department: "",
-            
 
-            formErrors:{
-                mobileNo:Number,
-                name:"",
+
+            formErrors: {
+                mobileNo: Number,
+                name: "",
                 email: "",
                 nic: "",
                 mobileNo: Number,
                 designation: "",
                 department: "",
-                
-            } 
+
+            }
 
         }
     }
 
     handleInputChange = (e) => {
- 
+
         const { name, value } = e.target;
         let formErrors = this.state.formErrors;
-        switch(name){
+        switch (name) {
             case "name":
-            formErrors.name=
-            value.length < 5
-            ?"Minimum charactor length must be 5"
-            :"";
-            break;
+                formErrors.name =
+                    value.length < 5
+                        ? "Minimum charactor length must be 5"
+                        : "";
+                break;
             case "email":
-            formErrors.email = invoiceRegx.test(value)
-            ? ""
-            : "Enter a valid email";
-            break;
+                formErrors.email = invoiceRegx.test(value)
+                    ? ""
+                    : "Enter a valid email";
+                break;
             case "mobileNo":
-            formErrors.mobileNo =
-            value.length > 10 || value.length > 10
-            ? "Enter a valid mobile number"
-            :"";
-            break;
+                formErrors.mobileNo =
+                    value.length > 10 || value.length > 10
+                        ? "Enter a valid mobile number"
+                        : "";
+                break;
             default:
-            break;
+                break;
         }
-        this.setState({formErrors,[name]: value},()=> console.log(this.state));
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
         this.setState({
             ...this.state,
@@ -72,60 +75,69 @@ export default class AddEmployee extends Component {
     onSubmit = (e) => {
         e.preventDefault();
 
-        if(formValid(this.state.formErrors)){
-           
+        if (formValid(this.state.formErrors)) {
 
-        const { name, email, nic, mobileNo, designation, department } = this.state;
 
-        const data = {
-            name: name,
-            email: email,
-            nic: nic,
-            mobileNo: mobileNo,
-            designation: designation,
-            department: department,
-         
+            const { name, email, nic, mobileNo, designation, department } = this.state;
+
+            const data = {
+                name: name,
+                email: email,
+                nic: nic,
+                mobileNo: mobileNo,
+                designation: designation,
+                department: department,
+
+            }
+            console.log(data)
+            axios.post("http://localhost:8000/employee/add", data).then((res) => {
+                if (res.data.success) {
+                    toast(`New Employee Added `, {
+                        type: toast.TYPE.SUCCESS,
+                        autoClose: 4000
+                    });
+                    this.setState(
+                        {
+                            name: "",
+                            email: "",
+                            nic: "",
+                            mobileNo: Number,
+                            designation: "",
+                            department: "",
+                        }
+                    )
+                };
+            });
         }
-        console.log(data)
-        axios.post("http://localhost:8000/employee/add", data).then((res) => {
-            if (res.data.success) {
-                toast(`New Employee Added `, {
-                    type: toast.TYPE.SUCCESS,
-                    autoClose: 4000
-                });
-                this.setState(
-                    {
-                        name: "",
-                        email: "",
-                        nic: "",
-                        mobileNo: Number,
-                        designation: "",
-                        department: "",
-                    }
-                )
-            };
-        });
-    }
-    else{
-        toast(`You are Inserting a blank! `, {
-            type: toast.TYPE.ERROR,
-            autoClose: 4000
-        });
-    
-    }
+        else {
+            toast(`You are Inserting a blank! `, {
+                type: toast.TYPE.ERROR,
+                autoClose: 4000
+            });
+
+        }
     };
 
     render() {
-        const {formErrors}= this.state;
+        const { formErrors } = this.state;
 
         return (
-            <div className="container">
+            <div className="container containerTop">
+            <div className="row">
+              <div className="col position-relative link">
+                <p><Link to="/get_Emp">Employee Management</Link> {'>'} Add New Employee</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-9 position-relative">
+                <h2>Add New Employee</h2>
+                < ToastContainer />
+              </div>
+              <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+            </div>                
                 <div className="row ">
-                    <div className="col-3"/>
+                    <div className="col-3" />
                     <div className="col-6 shadowBox" >
-                        <center>
-                            <h1 className="h3 mb-3 font-weight-normal">ADD New Employee</h1>
-                        </center>
                         <form className="needs-validation" noValidate >
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Employee Name</label>
@@ -136,9 +148,9 @@ export default class AddEmployee extends Component {
                                     value={this.state.name}
                                     onChange={this.handleInputChange} />
 
-                                {formErrors.name.length > 5  &&(
-                                <span style={{color:'red'}} className="errorMessage">{formErrors.name}</span>
-                            )}
+                                {formErrors.name.length > 5 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.name}</span>
+                                )}
 
                             </div>
 
@@ -150,8 +162,8 @@ export default class AddEmployee extends Component {
                                     placeholder="Enter email"
                                     value={this.state.email}
                                     onChange={this.handleInputChange} />
-                                     {formErrors.email.length > 0 && (
-                                    <span style={{ color: 'red',fontWeight:'bold' }} className="errorMessage">{formErrors.email}</span>
+                                {formErrors.email.length > 0 && (
+                                    <span style={{ color: 'red', fontWeight: 'bold' }} className="errorMessage">{formErrors.email}</span>
                                 )}
                             </div>
 
@@ -174,9 +186,9 @@ export default class AddEmployee extends Component {
                                     value={this.state.mobileNo}
                                     onChange={this.handleInputChange} />
 
-                                {formErrors.mobileNo.length > 10 &&(
-                                <span style={{color:'red'}} className="errorMessage">{formErrors.mobileNo}</span>
-                                 )}
+                                {formErrors.mobileNo.length > 10 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.mobileNo}</span>
+                                )}
 
                             </div>
 
@@ -188,11 +200,10 @@ export default class AddEmployee extends Component {
                                     placeholder="Enter Designation"
                                     value={this.state.designation}
                                     onChange={this.handleInputChange} />
-                               { formErrors.designation.length > 3 &&(
-                                <span style={{color:'red'}} className="errorMessage">{formErrors.designation}</span>
-                                 )}
+                                {formErrors.designation.length > 3 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.designation}</span>
+                                )}
                             </div>
-
 
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Department</label>
@@ -200,19 +211,19 @@ export default class AddEmployee extends Component {
                                     className="form-control"
                                     name="department"
                                     placeholder="Select Department"
-                                    
+
                                     value={this.state.department}
                                     onChange={this.handleInputChange} >
-                                        <option selected></option>
-                                        <option values="Marketing_Dep">Marketing Dep</option>
-                                        <option values="Arrangments_Dep">Arrangments Dep</option>
-                                        <option values="Finance_Dep">Finance Dep</option>
-                                        <option values="Kitchen_Dep">Kitchen Dep</option>
-                                        </select>
-                               
+                                    <option selected></option>
+                                    <option values="Marketing_Dep">Marketing Dep</option>
+                                    <option values="Arrangments_Dep">Arrangments Dep</option>
+                                    <option values="Finance_Dep">Finance Dep</option>
+                                    <option values="Kitchen_Dep">Kitchen Dep</option>
+                                </select>
+
                             </div>
 
-                    
+
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto  ">
                                     <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Add</button>
@@ -220,7 +231,7 @@ export default class AddEmployee extends Component {
                             </center>
                         </form>
                     </div>
-                    <div className="col-3"/>
+                    <div className="col-3" />
                 </div>
             </div>
 
