@@ -8,20 +8,13 @@ import AddEmployee from './Components/Employee/AddEmployee';
 import UpdateEmployee from './Components/Employee/UpdateEmployee';
 import GetSpecific from './Components/Employee/GetSpecific';
 
-
-
 import CreateAttendance from './Components/CreateAttendance';
-
-import EmpAttend from './Components/EmpAttend';
 import SendEmail from './Components/SendEmail';
-
 
 import ViewSuppliers from './Components/Supplier/ViewSuppliers';
 import AddSupplier from './Components/Supplier/AddSupplier';
 import UpdateSupplier from './Components/Supplier/UpdateSupplier';
-import ViewSupplierOrders from './Components/SupplierOrder/ViewSupplierOrders';
-import AddSupplierOrder from './Components/SupplierOrder/AddSupplierOrder';
-import UpdateSupplierOrder from './Components/SupplierOrder/UpdateSupplierOrder';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -54,8 +47,7 @@ export default class App extends Component {
           <Route path="/add_R" component={CreateRecord}></Route>
           <Route path="/edit_R/:id" component={EditRecord}></Route>*/}
           <Route path="/attend" component={CreateAttendance}></Route>
-          <Route path="/attend_h" component={EmpAttend}></Route>
-
+         
          
           <Route exact path='/supplier'>
             <ViewSuppliers />
@@ -66,15 +58,7 @@ export default class App extends Component {
           <Route exact path='/update-supplier/:id'>
             <UpdateSupplier />
           </Route>
-          <Route exact path='/supplier-orders'>
-            <ViewSupplierOrders />
-          </Route>
-          <Route exact path='/new-supplier-order'>
-            <AddSupplierOrder />
-          </Route>
-          <Route exact path='/update-supplier-order/:id'>
-            <UpdateSupplierOrder />
-          </Route>
+         
           <Route path="/attend_home" component={AttendHome}></Route>
 
 

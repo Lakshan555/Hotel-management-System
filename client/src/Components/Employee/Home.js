@@ -127,7 +127,7 @@ export default class Home extends Component {
             </div>
             <div className="row">
               <div className="col-2 buttons">
-                <Link to="/attend" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
+                <Link to="/attend_home" type="button" class="btn btn-primary buttonStyle" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
               </div>
               <div className="col-2 buttons">
                 <Link to="/emp_add" type="button" class="btn btn-success buttonStyle"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</Link><br /><br />
@@ -137,7 +137,9 @@ export default class Home extends Component {
               </div>
               <div className="col-2" />
               <div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
-                <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search a employee" name="searchQuery" onChange={this.handleSearchArea} />
+
+                <i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search an Employee" name="searchQuery" onChange={this.handleSearchArea} />
+
               </div>
             </div>
             <div className="shadowBox">
@@ -147,12 +149,12 @@ export default class Home extends Component {
                     <thead className="table table-dark">
                       <tr>
                         <th scope="col">Emp No</th>
-                        <th scope="col">Department</th>
                         <th scope="col">Employee Name</th>
+                        <th scope="col">Department</th>
                         <th scope="col">NIC</th>
                         <th scope="col">Contact number</th>
-                        <th scope="col">Designation</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Designation</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -160,12 +162,13 @@ export default class Home extends Component {
                       <tbody>
                         <tr>
                           <th scope="row"><a href="" style={{ textDecoration: 'none', color: '#000' }}></a>EMP{index + 1}</th>
-                          <td>{employee.department}</td>
                           <td>{employee.name}</td>
+                          <td>{employee.department}</td>
                           <td>{employee.nic}</td>
                           <td>{employee.mobileNo}</td>
-                          <td>{employee.designation}</td>
                           <td>{employee.email}</td>
+                          <td>{employee.designation}</td>
+
                           <td>
                             <Link to={`/emp_update/${employee._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit

@@ -157,7 +157,7 @@ export default class AddEmployee extends Component {
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Email</label>
                                 <input type="email"
-                                    className={formErrors.email.length > 0 ? "error" : "form-control"}
+                                    className={"form-control"}
                                     name="email"
                                     placeholder="Enter email"
                                     value={this.state.email}
