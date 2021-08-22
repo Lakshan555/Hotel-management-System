@@ -179,25 +179,6 @@ export default class UpdateEmployee extends Component {
                             </select>
                         </div>
 
-                            <div className="form-group" style={{ marginBottom: '15px' }}>
-                                <label style={{ marginBottom: '5px' }}>Department</label>
-                                <select type="text"
-                                    className="form-control"
-                                    name="department"
-                                    placeholder="Select Department"
-
-                                    value={this.state.department}
-                                    onChange={this.handleInputChange} >
-                                        <option selected>{this.state.department}</option>
-                                        <option values="Marketing_Dep">Marketing Dep</option>
-                                        <option values="Arrangments_Dep">Arrangments Dep</option>
-                                        <option values="Finance_Dep">Finance Dep</option>
-                                        <option values="Kitchen_Dep">Kitchen Dep</option>
-                                        </select>
-
-                            </div>
-
-
                             <center>
                                 <div class="d-grid gap-2 col-6 mx-auto">
                                     <button type="submit" className="btn btn-primary sub_btn" onClick={this.onSubmit}><i class="far fa-save"></i>&nbsp;Update</button>
@@ -209,7 +190,7 @@ export default class UpdateEmployee extends Component {
                 </div>
                 <div className="col-3" />
             </div>
-        </div>
+
         )
     }
 }

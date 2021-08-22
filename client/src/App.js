@@ -8,8 +8,10 @@ import AddEmployee from './Components/Employee/AddEmployee';
 import UpdateEmployee from './Components/Employee/UpdateEmployee';
 import GetSpecific from './Components/Employee/GetSpecific';
 
-import CreateAttendance from './Components/CreateAttendance';
-import SendEmail from './Components/SendEmail';
+import AttendHome from './Components/EmployeeAttendance/AttendHome';
+import CreateAttendance from './Components/EmployeeAttendance/CreateAttendance';
+import SendEmail from './Components/EmployeeAttendance/SendEmail';
+
 
 import ViewSuppliers from './Components/Supplier/ViewSuppliers';
 import AddSupplier from './Components/Supplier/AddSupplier';
@@ -20,7 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 
-import AttendHome from './Components/AttendHome';
+
 
 
 
