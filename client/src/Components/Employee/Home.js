@@ -164,8 +164,8 @@ export default class Home extends Component {
                           <td>{employee.name}</td>
                           <td>{employee.nic}</td>
                           <td>{employee.mobileNo}</td>
+                          <td>{employee.designation}</td>
                           <td>{employee.email}</td>
-                          <td>{employee.department}</td>
                           <td>
                             <Link to={`/emp_update/${employee._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit
