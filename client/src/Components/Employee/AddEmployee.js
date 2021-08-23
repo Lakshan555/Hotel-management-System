@@ -130,7 +130,7 @@ export default class AddEmployee extends Component {
             </div>
             <div className="row">
               <div className="col-9 position-relative">
-                <h2>Add New Employee</h2>
+                <h1 className='display-5 fw-bold'>Add New Employee</h1>
                 < ToastContainer />
               </div>
               <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />

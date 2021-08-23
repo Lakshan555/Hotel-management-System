@@ -189,7 +189,7 @@ export default class AttendHome extends Component {
         </div>
         <div className="row">
           <div className="col-9 position-relative">
-            <h2>Attendence List</h2>
+            <h1 className='display-5 fw-bold'>Attendence List</h1>
             < ToastContainer />
           </div>
           <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />

@@ -120,17 +120,17 @@ export default class Home extends Component {
             </div>
             <div className="row">
               <div className="col-9 position-relative">
-                <h2>Employee</h2>
+                <h1 className='display-5 fw-bold'>Employee Details</h1>
                 < ToastContainer />
               </div>
               <hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
             </div>
             <div className="row">
               <div className="col-2 buttons">
-                <Link to="/attend_home" type="button" class="button_add" ><i class="fas fa-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
+                <Link to="/attend_home" type="button" class="btn button_add" ><i class="fas fa-user-clock"></i>&nbsp;&nbsp;Attendance</Link><br /><br />
               </div>
               <div className="col-2 buttons">
-                <Link to="/emp_add" type="button" class="button_add2"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</Link><br /><br />
+                <Link to="/emp_add" type="button" class="btn button_add2"><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Employee</Link><br /><br />
               </div>
               <div className="col-3 buttons2">
                 <Link onClick={()=>this.exportPDF()}  class="button_pdf"  ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
