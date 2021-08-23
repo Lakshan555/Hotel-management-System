@@ -43,13 +43,8 @@ export default class App extends Component {
           <Route path="/employee/:id" exact component={GetSpecific}></Route>
 
 
+           {/*Supplier*/}
           <Route path="/email" component={SendEmail}></Route>
-          {/*<Route path="/get_R" exact component={RecordHome}></Route>
-          <Route path="/add_R" component={CreateRecord}></Route>
-          <Route path="/edit_R/:id" component={EditRecord}></Route>*/}
-          
-         
-         
           <Route exact path='/supplier'>
             <ViewSuppliers />
           </Route>
