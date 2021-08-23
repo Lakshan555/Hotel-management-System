@@ -284,3 +284,20 @@ table tr {
 .buttons2{
     margin-top: 27px;
 }
+
+/* add */
+
+.sub_btn{
+    background-color: #ad04fc;
+    width: 100%;
+    margin-top: 35px;
+    margin-right: 100px;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+}
+.sub_btn:hover{
+    background-color:#7071ad ;
+    font-size: large;
+    font-weight: bold;
+}

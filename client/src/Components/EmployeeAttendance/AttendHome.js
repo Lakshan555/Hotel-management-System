@@ -12,13 +12,36 @@ import './attendanceStyle.css';
 export default class AttendHome extends Component {
   constructor(props) {
     super(props);
+    this.calculateAmount = this.calculateAmount.bind(this);
     this.state = {
       attends: [],
+      employee:[],
+      name:"",
       empID:"",
       aTime: new Date(),
       type:""      
     };
   }
+
+  //calculation 
+  calculateAmount = () =>{
+    let tot =0;
+    let tot2 = 0;
+    this.state.attends.map((attends,index)=>{
+     if(new Date(attends.aTime).toDateString() == new Date().toDateString() && attends.type == "IN"){
+       tot =  tot + 1
+     }
+    })
+    this.state.employee.map((employee,index)=>{
+      if(employee.name != "")
+        tot2 =  tot2 + 1  
+     })
+    document.getElementById("cou").value = tot
+    document.getElementById("cou1").value = tot2 - tot
+    document.getElementById("per").value =  (tot / tot2) * 100 + "%"
+    
+  }
+
 
   exportPDF = () => {
     const unit = "pt";
@@ -85,6 +108,7 @@ export default class AttendHome extends Component {
 
   componentDidMount() {
     this.retrieveAttendence();
+    this.retrieveEmployee()
   }
 
   retrieveAttendence() {
@@ -97,6 +121,19 @@ export default class AttendHome extends Component {
       }
     });
   }
+
+  retrieveEmployee(){
+    axios.get(`http://localhost:8000/employee`).then(res=>{
+    if(res.data.success){
+        this.setState({
+            employee:res.data.existingEmployee
+        });
+        console.log(this.state.employee);
+
+    }
+       
+    });
+}
 
 
   onDelete = (id) => {
@@ -139,7 +176,7 @@ export default class AttendHome extends Component {
       }
     });
 
-  }
+  }  
   render() {
     return (
       <div className="container containerTop">
@@ -230,10 +267,15 @@ export default class AttendHome extends Component {
                     value={this.state.empID}
                     onChange={this.handleInputChange} required />
                 </div>          
-                <div className="form-group" style={{marginTop: '15px', textAlign: 'center'}}>
+                <div className="form-group" style={{marginTop: '15px', textAlign: 'center'}}>  
                   <button type="submit" className="btn btn-primary" style={{borderRadius:'10px'}} onClick={this.onSubmit}>Submit</button>                                     
                 </div>
               </form>
+                
+              <input id="cou1" />
+              <input id="cou" />
+              <input id="per" />
+              <button onClick={this.calculateAmount}>Calculate</button>
             </div>
           </div>
         </div>
