@@ -214,7 +214,7 @@ export default class AddEmployee extends Component {
 
                                     value={this.state.department}
                                     onChange={this.handleInputChange} >
-                                    <option selected></option>
+                                    <option selected>Choose Department</option>
                                     <option values="Marketing_Dep">Marketing Dep</option>
                                     <option values="Arrangments_Dep">Arrangments Dep</option>
                                     <option values="Finance_Dep">Finance Dep</option>
