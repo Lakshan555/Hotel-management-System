@@ -48,7 +48,7 @@ export default class AddEmployee extends Component {
         switch (name) {
             case "empNo":
                 formErrors.empNo =
-                    value.length < 4 || value.length > 5
+                    value.length < 5 || value.length > 6
                     ? "Emp number should have charactor between 4 to 5"
                     : "";
                     break;
@@ -156,11 +156,11 @@ export default class AddEmployee extends Component {
                                     className="form-control"
                                     name="empNo"
                                     minLength="4"
-                                    maxLength="5"
-                                    placeholder="Enter Employee Number"
+                                    maxLength="6"
+                                    placeholder="EMP001"
                                     value={this.state.empNo}
                                     onChange={this.handleInputChange} />
-                                {formErrors.empNo.length < 4 || formErrors.empNo.length > 5 && (
+                                {formErrors.empNo.length < 4 || formErrors.empNo.length > 6 && (
                                     <span style={{ color: 'red' }} className="errorMessage">{formErrors.empNo}</span>
                                 )}
                             </div>

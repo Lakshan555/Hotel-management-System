@@ -114,7 +114,7 @@ export default class UpdateEmployee extends Component {
                             <input type="text"
                                 className="form-control"
                                 minLength="4"
-                                maxLength="5"
+                                maxLength="6"
                                 name="empNo"
                                 placeholder="Enter Employee Number"
                                 value={this.state.empNo}

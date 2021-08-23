@@ -44,7 +44,7 @@ const SuppliersTable = ({ suppliers, deleted, setDeleted }) => {
 									<th scope='col'>Address</th>
 									<th scope='col'>BR Number</th>
 									<th scope='col'>Product Name</th>
-									<th scope='col'>Product Price</th>
+									<th scope='col'>Product Price(LKR)</th>
 									<th scope='col'>Manage</th>
 								</tr>
 							</thead>
