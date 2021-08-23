@@ -86,8 +86,6 @@ export default class Home extends Component {
   }
 
 
-
-
   filterData(employee, searchKey) {
     const result = employee.filter((employee) =>
       employee.empNo.toLowerCase().includes(searchKey) ||
