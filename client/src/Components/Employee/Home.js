@@ -91,6 +91,7 @@ export default class Home extends Component {
       employee.empNo.toLowerCase().includes(searchKey) ||
       employee.name.toLowerCase().includes(searchKey) ||
       employee.email.toLowerCase().includes(searchKey) ||
+      employee.department.toLowerCase().includes(searchKey) ||
       employee.designation.toLowerCase().includes(searchKey)
     )
     this.setState({ employee: result })
