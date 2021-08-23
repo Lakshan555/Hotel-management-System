@@ -65,9 +65,18 @@ const SuppliersTable = ({ suppliers, deleted, setDeleted }) => {
 												<Link to={`/update-supplier/${supplier.supplierId}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
 													<i class="far fa-edit"></i>&nbsp;Edit
 												</Link>&nbsp;&nbsp;
-												<Link to="#" type="button" class="btn btn-danger" onClick={() => { deleteSupplier(supplier) }}>
+												<Link
+													className='btn btn-danger'
+													onClick={() => {
+														if (
+															window.confirm(
+																'Are you sure you need to delete this supplier? If yes, suppliers orders will be deleted too'
+															)
+														)
+															deleteSupplier(supplier);
+													}}>
 													<i className="far fa-trash-alt"></i>&nbsp;Delete
-												</Link>
+												</Link>												
 											</td>
 										</tr>
 									);

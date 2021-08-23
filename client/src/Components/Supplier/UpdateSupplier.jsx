@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 
@@ -92,57 +93,27 @@ const UpdateSupplier = () => {
 	};
 	return (
 		<>
-			<div className='jumbotron text-center py-4  mb-5 page-jumbotron'>
-				<h1 className='display-4 fw-bold'>
-					Update Supplier - {params.id}
-				</h1>
-				<div className='container'>
-					<nav aria-label='breadcrumb'>
-						<ol className='breadcrumb'>
-							<li className='breadcrumb-item'>
-								<Link to='/supplier' className='no-decoration'>
-									View Suppliers
-								</Link>
-							</li>
-							<li
-								className='breadcrumb-item active'
-								aria-current='page'>
-								Update Supplier
-							</li>
-						</ol>
-					</nav>
+			<div className="container containerTop">
+				<div className="row">
+					<div className="col position-relative link">
+						<p><Link to="/supplier">Supplier Management</Link> {'>'} Update Supplier</p>
+					</div>
 				</div>
+				<div className="row">
+					<div className="col-9 position-relative">
+						<h1 className='display-5 fw-bold'>Update Supplier - {params.id}</h1>
+						< ToastContainer />
+					</div>
+				<hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+				</div>   
 			</div>
-			<div className='container mb-5'>
-				<div className='row justify-content-center'>
-					<div className='col-md-8 p-5 form-background justify-content-center'>
-						{isLoading ? (
-							<div className='row text-center'>
-								<Loader
-									type='Oval'
-									color='#0d6efd'
-									height={30}
-									width={30}
-								/>
-							</div>
-						) : (
-							<form onSubmit={handleSubmit}>
-								<div className='row'>
-									<div className='form-group col-md-6'>
-										<label htmlFor='supplierId'>
-											Supplier ID
-										</label>
-										<input
-											type='text'
-											className='form-control'
-											name='supplierId'
-											placeholder='SP0001'
-											value={supplierId}
-											required
-										/>
-									</div>
-
-									<div className='form-group col-md-6'>
+			<div className="row">
+				<div className="col-2" />
+					<div className="col-8 shadowBox" >
+						<form onSubmit={handleSubmit}>
+							<div className="row">
+								<div className="col-6">
+									<div className='form-group'>
 										<label htmlFor='name'>Name</label>
 										<input
 											type='text'
@@ -153,10 +124,26 @@ const UpdateSupplier = () => {
 											required
 											placeholder='Supplier Name '
 										/>
-									</div>
+									</div>									
 								</div>
-								<div className='row'>
-									<div className='form-group col-md-6'>
+								<div className="col-6">
+									<div className='form-group '>
+										<label htmlFor='supplierId'>Supplier ID</label>
+										<input
+											type='text'
+											className='form-control'
+											name='supplierId'
+											placeholder='SP0001'
+											value={supplierId}
+											onChange={handleChange}
+											required
+										/>
+									</div>									
+								</div>
+							</div>
+							<div className="row">
+								<div className="col-6">
+									<div className='form-group'>
 										<label htmlFor='email'>Email</label>
 										<input
 											type='email'
@@ -167,11 +154,11 @@ const UpdateSupplier = () => {
 											onChange={handleChange}
 											required
 										/>
-									</div>
-									<div className='form-group col-md-6'>
-										<label htmlFor='phoneNumber'>
-											Phone
-										</label>
+									</div>									
+								</div>
+								<div className="col-6">
+									<div className='form-group'>
+										<label htmlFor='phoneNumber'>Phone</label>
 										<input
 											type='text'
 											className='form-control'
@@ -181,10 +168,12 @@ const UpdateSupplier = () => {
 											onChange={handleChange}
 											required
 										/>
-									</div>
+									</div>									
 								</div>
-								<div className='row'>
-									<div className='form-group col-md-6'>
+							</div>
+							<div className="row">
+								<div className="col-6">
+									<div className='form-group'>
 										<label htmlFor='address'>Address</label>
 										<textarea
 											className='form-control'
@@ -194,60 +183,69 @@ const UpdateSupplier = () => {
 											onChange={handleChange}
 											required
 										/>
+									</div>										
+								</div>
+								<div className="col-6">
+									<div className='form-group'>
+										<label htmlFor='br_number'>BR Number</label>
+										<input
+											type='number'
+											className='form-control'
+											name='br_number'
+											placeholder='BR Number'
+											value={br_number}
+											onChange={handleChange}
+											required
+										/>
+									</div>										
+								</div>
+							</div>
+							<div className="row">
+								<div className="col-6">								
+									<div className='form-group'>
+										<label htmlFor='product_name'>Product Names</label>
+										<input
+											type='text'
+											className='form-control'
+											name='product_name'
+											placeholder='Product Name'
+											value={product_name}
+											onChange={handleChange}
+											required
+										/>
 									</div>
-									<div className='form-group col-md-6'>
-									<label htmlFor='br_number'>
-										BR Number
-									</label>
-									<input
-										type='number'
-										className='form-control'
-										name='br_number'
-										placeholder='BR Number'
-										value={br_number}
-										onChange={handleChange}
-										required
-									/>
+								</div>																
+								<div className="col-6">															
+									<div className='form-group'>
+										<label htmlFor='product_price'>Product Price</label>
+										<input
+											type='number'
+											className='form-control'
+											name='product_price'
+											placeholder='Product Price'
+											value={product_price}
+											onChange={handleChange}
+											required
+										/>
+									</div>																									
 								</div>
-							</div><div className='row'>
-									<div className='form-group col-md-6'>
-									<label htmlFor='product_name'>
-										Product Names
-									</label>
-									<input
-										type='text'
-										className='form-control'
-										name='product_name'
-										placeholder='Product Name'
-										value={product_name}
-										onChange={handleChange}
-										required
-									/>
+							</div>
+							<div className="row">
+								<div className="col-4" />
+								<div className="col-4">									
+									<button type='submit' className='btn btn-primary sub_btn'>Update supplier</button>
 								</div>
-								<div className='form-group col-md-6'>
-									<label htmlFor='product_price'>Product Price</label>
-									<input
-									    type='number'
-										className='form-control'
-										name='product_price'
-										placeholder='Product Price'
-										value={product_price}
-										onChange={handleChange}
-										required
-									/>
-								</div>
-								</div>
-
-								<button
-									type='submit'
-									className='btn btn-primary mt-5 w-100 float-end'>
-									Update supplier
-								</button>
-							</form>
-						)}
+								<div className="col-4" />
+							</div>
+						</form>
 					</div>
-				</div>
+				<div className="col-2" />
 			</div>
+
+
+
+
+
 		</>
 	);
 };

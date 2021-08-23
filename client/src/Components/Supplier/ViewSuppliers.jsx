@@ -5,7 +5,6 @@ import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import swl from 'sweetalert'
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import './supplierStyles.css'
@@ -101,7 +100,7 @@ const ViewSuppliers = () => {
 						</div>
 						<div className="row">
 							<div className="col-2 buttons">
-								<Link to="/add-new-supplier" type="button" class="btn button_add" ><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add New</Link><br /><br />
+								<Link to="/add-new-supplier" type="button" class="btn button_add" ><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add Supplier</Link><br /><br />
 							</div>
 							<div className="col-2 buttons">
 								<Link to="/email" type="button" class="btn button_add2"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Send Email</Link><br /><br />

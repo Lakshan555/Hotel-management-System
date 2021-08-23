@@ -99,7 +99,7 @@ export default class Home extends Component {
 
 
   handleSearchArea = (e) => {
-    const searchKey = e.currentTarget.value;
+    const searchKey = e.currentTarget.value.toLowerCase();
     axios.get("http://localhost:8000/employee").then(res => {
       if (res.data.success) {
         this.filterData(res.data.existingEmployee, searchKey)
