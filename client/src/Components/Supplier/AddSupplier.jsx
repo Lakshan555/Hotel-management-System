@@ -64,6 +64,8 @@ const AddSupplier = () => {
 	};
 	return (
 		<>
+
+		
 			<div className='jumbotron text-center py-4  mb-5 page-jumbotron'>
 				<h1 className='display-4 fw-bold'>Add New Supplier</h1>
 				<div className='container'>
