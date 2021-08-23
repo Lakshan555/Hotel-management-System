@@ -1,11 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import SuppliersTable from './SuppliersTable';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import swl from 'sweetalert'
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import './supplierStyles.css'
 
 const ViewSuppliers = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -34,11 +37,10 @@ const ViewSuppliers = () => {
 		});
 
 		doc.autoTable({
-			head: [['#', 'ID', 'Name', 'Email', 'Mobile', 'Address', 'BR Number','Product Name','Product Price']],
+			head: [['#', 'ID', 'Name', 'Email', 'Mobile', 'Address', 'BR Number', 'Product Name', 'Product Price']],
 
 			body: array
 
-		
 		});
 
 		doc.save('suppliers.pdf');
@@ -79,44 +81,42 @@ const ViewSuppliers = () => {
 			setSuppliers(searchList);
 		}
 	};
-	
+
 	return (
 		<>
-			<div className='jumbotron text-center py-4  mb-5 page-jumbotron'>
-				<h1 className='display-4 fw-bold'>Suppliers Details</h1>
-			</div>
-			<div className='container my-3'>
-				<div className='row justify-content-between'>
-					<div className='col-md-3'>
-						<div className='input-group w-100'>
-							<div className='form-outline w-100'>
-								<input
-									placeholder='🔍 Search Supplier (use id or name)'
-									type='search'
-									id='form1'
-									className='form-control'
-									onChange={search}
-								/>
+			<div className="container containerTop">
+				<div className="row">
+					<div className="col-12">
+						<div className="row">
+							<div className="col position-relative link">
+								<p>Supplier Management</p>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-9 position-relative">
+								<h1 className='display-5 fw-bold'>Suppliers Details</h1>
+								< ToastContainer />
+							</div>
+							<hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+						</div>
+						<div className="row">
+							<div className="col-2 buttons">
+								<Link to="/add-new-supplier" type="button" class="btn button_add" ><i class="fal fa-plus-circle"></i>&nbsp;&nbsp;Add New</Link><br /><br />
+							</div>
+							<div className="col-2 buttons">
+								<Link to="/email" type="button" class="btn button_add2"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Send Email</Link><br /><br />
+							</div>
+							<div className="col-3 buttons2">
+								<Link onClick={downloadReport} class="button_pdf"  ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
+							</div>
+							<div className="col-2" />
+							<div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
+								<i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search a Supplier" name="searchQuery" onChange={search} />
 							</div>
 						</div>
 					</div>
-
-					<div className='col-md-4'>
-						<Link
-							className='btn btn-primary w-100'
-							to='/add-new-supplier'>
-							+ Add New
-						</Link>
-					</div>
-					<div className='col-md-4'>
-						<Link
-							className='btn btn-primary w-100'
-							to="/email">
-							+ Send Email
-						</Link>
-					</div>
 				</div>
-			</div>
+
 			{isLoading ? (
 				<div className='container text-center py-5'>
 					<Loader
@@ -129,27 +129,19 @@ const ViewSuppliers = () => {
 			) : suppliers.length > 0 ? (
 				<>
 
-				<SuppliersTable
-					suppliers={suppliers}
-					setDeleted={setDeleted}
-					deleted={deleted}
-				/>
+					<SuppliersTable
+						suppliers={suppliers}
+						setDeleted={setDeleted}
+						deleted={deleted}
+					/>
 
-				<div className='row justify-content-end'>
-						<div className='col-md-2'>
-							<button
-								className='btn btn-primary'
-								onClick={downloadReport}>
-								Download report
-							</button>
-						</div>
-					</div>
 				</>
 			) : (
 				<div className='container text-center py-5'>
 					<h3>No suppliers found</h3>
 				</div>
 			)}
+			</div>			
 		</>
 	);
 };

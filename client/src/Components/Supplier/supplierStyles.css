@@ -37,6 +37,7 @@ h1, h2, h3 {
 .shadowBox {
     margin-top: 40px;
     padding: 30px;
+    margin-bottom: 50px;
     border-radius: 10px;
     background-color: #fff;
     opacity: 0.9;
@@ -136,4 +137,6 @@ table tr {
     margin-top: 10px;
     
 }
+
+
 
