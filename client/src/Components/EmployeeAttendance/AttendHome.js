@@ -93,7 +93,7 @@ export default class AttendHome extends Component {
     //console.log(data)
     axios.post("http://localhost:8000/attend/save", data).then((res) => {
       if (res.data.success) {
-        alert("Mark Attendence successfully")
+        toast.success("Attendence Marked successfully")
         this.setState(
           {
             empID: "",

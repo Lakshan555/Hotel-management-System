@@ -22,7 +22,7 @@ export default class Home extends Component {
 
   exportPDF = () => {
     const unit = "pt";
-    const size = "A3"; // Use A1, A2, A3 or A4
+    const size = "A4"; // Use A1, A2, A3 or A4
 
     const marginLeft = 40;
     const doc = new jsPDF('landscape', unit, size);

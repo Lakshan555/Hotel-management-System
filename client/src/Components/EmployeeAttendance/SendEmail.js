@@ -11,7 +11,7 @@ export default function AppEmail() {
 
   function sendEmail(e) {
     e.preventDefault();
-    emailjs.sendForm('gmail', 'template_akp5ckl', e.target, 'user_X2pNlx5KljvJDZ97xLbjU')
+    emailjs.sendForm('gmail', 'template_356qxmy', e.target, 'user_6zlJu3e1ZQV4U0jDbC7wJ')
       .then((result) => {
         console.log(result.text);
         alert("You email is sent successfully");
@@ -56,13 +56,13 @@ export default function AppEmail() {
       <div className="col-md-6">
         <div className="shadowBox">
             <div className="row" style={{textAlign:'center'}}>
-              <h1 className="h3 mb-3 font-weight-normal">Inform the supplier</h1>
+              <h1 className="h3 mb-3 font-weight-normal">Inform the Stock Manager</h1>
             </div>          
           <div className="container">
             <div style={{ marginTop: "5%" }}>
               <form onSubmit={sendEmail}>
                 <div class="form-group" style={{ marginBottom: '15px' }}>
-                  <label style={{ marginBottom: '5px' }}>Supplier Name</label>
+                  <label style={{ marginBottom: '5px' }}>Stock Manager Name</label>
                   <input name="name" type="text" class="form-control" placeholder="Enter Name" />
                 </div>
 

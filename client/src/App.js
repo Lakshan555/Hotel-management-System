@@ -9,7 +9,6 @@ import UpdateEmployee from './Components/Employee/UpdateEmployee';
 import GetSpecific from './Components/Employee/GetSpecific';
 
 import AttendHome from './Components/EmployeeAttendance/AttendHome';
-import CreateAttendance from './Components/EmployeeAttendance/CreateAttendance';
 import SendEmail from './Components/EmployeeAttendance/SendEmail';
 
 
@@ -48,7 +47,7 @@ export default class App extends Component {
           {/*<Route path="/get_R" exact component={RecordHome}></Route>
           <Route path="/add_R" component={CreateRecord}></Route>
           <Route path="/edit_R/:id" component={EditRecord}></Route>*/}
-          <Route path="/attend" component={CreateAttendance}></Route>
+          
          
          
           <Route exact path='/supplier'>
