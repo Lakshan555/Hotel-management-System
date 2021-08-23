@@ -6,7 +6,7 @@ import NavBar from './Components/NavBar/Navbar';
 import Home from './Components/Employee/Home';
 import AddEmployee from './Components/Employee/AddEmployee';
 import UpdateEmployee from './Components/Employee/UpdateEmployee';
-import GetSpecific from './Components/Employee/GetSpecific';
+
 
 import AttendHome from './Components/EmployeeAttendance/AttendHome';
 import SendEmail from './Components/EmployeeAttendance/SendEmail';
@@ -40,7 +40,7 @@ export default class App extends Component {
           <Route path="/get_Emp" exact component={Home}></Route>
           <Route path="/emp_add" exact component={AddEmployee}></Route>
           <Route path="/emp_update/:id" exact component={UpdateEmployee}></Route>
-          <Route path="/employee/:id" exact component={GetSpecific}></Route>
+         
 
 
            {/*Supplier*/}
