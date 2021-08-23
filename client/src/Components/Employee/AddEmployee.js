@@ -17,6 +17,7 @@ export default class AddEmployee extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            empNo:"",
             name: "",
             email: "",
             nic: "",
@@ -27,6 +28,7 @@ export default class AddEmployee extends Component {
 
             formErrors: {
                 mobileNo: Number,
+                empNo:"",
                 name: "",
                 email: "",
                 nic: "",
@@ -44,25 +46,31 @@ export default class AddEmployee extends Component {
         const { name, value } = e.target;
         let formErrors = this.state.formErrors;
         switch (name) {
-            case "name":
-                formErrors.name =
-                    value.length < 5
-                        ? "Minimum charactor length must be 5"
-                        : "";
-                break;
-            case "email":
-                formErrors.email = invoiceRegx.test(value)
-                    ? ""
-                    : "Enter a valid email";
-                break;
-            case "mobileNo":
-                formErrors.mobileNo =
-                    value.length > 10 || value.length > 10
-                        ? "Enter a valid mobile number"
-                        : "";
-                break;
-            default:
-                break;
+            case "empNo":
+                formErrors.empNo =
+                    value.length < 4 || value.length > 5
+                    ? "Emp number should have charactor between 4 to 5"
+                    : "";
+                    break;
+                case "name":
+                    formErrors.name =
+                        value.length < 5
+                            ? "Minimum charactor length must be 5"
+                            : "";
+                    break;
+                case "email":
+                    formErrors.email = invoiceRegx.test(value)
+                        ? ""
+                        : "Enter a valid email";
+                    break;
+                case "mobileNo":
+                    formErrors.mobileNo =
+                        value.length > 10 || value.length > 10
+                            ? "Enter a valid mobile number"
+                            : "";
+                    break;
+                default:
+                    break;
         }
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
@@ -78,9 +86,10 @@ export default class AddEmployee extends Component {
         if (formValid(this.state.formErrors)) {
 
 
-            const { name, email, nic, mobileNo, designation, department } = this.state;
+            const { empNo, name, email, nic, mobileNo, designation, department } = this.state;
 
             const data = {
+                empNo:empNo,
                 name: name,
                 email: email,
                 nic: nic,
@@ -98,6 +107,7 @@ export default class AddEmployee extends Component {
                     });
                     this.setState(
                         {
+                            empNo:"",
                             name: "",
                             email: "",
                             nic: "",
@@ -139,6 +149,22 @@ export default class AddEmployee extends Component {
                     <div className="col-3" />
                     <div className="col-6 shadowBox" >
                         <form className="needs-validation" noValidate >
+
+                            <div className="form-group" style={{ marginBottom: '15px' }}>
+                                <label style={{ marginBottom: '5px' }}>Employee No</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="empNo"
+                                    minLength="4"
+                                    maxLength="5"
+                                    placeholder="Enter Employee Number"
+                                    value={this.state.empNo}
+                                    onChange={this.handleInputChange} />
+                                {formErrors.empNo.length < 4 || formErrors.empNo.length > 5 && (
+                                    <span style={{ color: 'red' }} className="errorMessage">{formErrors.empNo}</span>
+                                )}
+                            </div>
+
                             <div className="form-group" style={{ marginBottom: '15px' }}>
                                 <label style={{ marginBottom: '5px' }}>Employee Name</label>
                                 <input type="text"

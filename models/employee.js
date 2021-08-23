@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 
 const employeeSchema = new mongoose.Schema({
 
+    empNo:{
+        type: String,
+        required: true
+    },
     name : {
         type : String,
         required : true // this is back end validation 

@@ -90,6 +90,7 @@ export default class Home extends Component {
 
   filterData(employee, searchKey) {
     const result = employee.filter((employee) =>
+      employee.empNo.toLowerCase().includes(searchKey) ||
       employee.name.toLowerCase().includes(searchKey) ||
       employee.email.toLowerCase().includes(searchKey) ||
       employee.designation.toLowerCase().includes(searchKey)
@@ -148,7 +149,8 @@ export default class Home extends Component {
                   <table class="table table-hover">
                     <thead className="table-primary">
                       <tr>
-                        <th scope="col">Emp No</th>
+                        <th scope="col">#</th>
+                        <th scope="col">EMP No</th>
                         <th scope="col">Employee Name</th>
                         <th scope="col">Department</th>
                         <th scope="col">NIC</th>
@@ -161,14 +163,14 @@ export default class Home extends Component {
                     {this.state.employee.map((employee, index) => (
                       <tbody>
                         <tr>
-                          <th scope="row"><a href="" style={{ textDecoration: 'none', color: '#000' }}></a>EMP{index + 1}</th>
+                          <th scope="row"><a href="" style={{ textDecoration: 'none', color: '#000' }}></a>{index + 1}</th>
+                          <td>{employee.empNo}</td>
                           <td>{employee.name}</td>
                           <td>{employee.department}</td>
                           <td>{employee.nic}</td>
                           <td>{employee.mobileNo}</td>
                           <td>{employee.email}</td>
                           <td>{employee.designation}</td>
-
                           <td>
                             <Link to={`/emp_update/${employee._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit

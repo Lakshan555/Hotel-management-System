@@ -133,6 +133,7 @@ const UpdateSupplier = () => {
 											type='text'
 											className='form-control'
 											name='supplierId'
+											readOnly
 											placeholder='SP0001'
 											value={supplierId}
 											onChange={handleChange}

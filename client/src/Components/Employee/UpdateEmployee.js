@@ -10,6 +10,7 @@ export default class UpdateEmployee extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            empNo:"",
             name: "",
             email: "",
             nic: "",
@@ -34,9 +35,10 @@ export default class UpdateEmployee extends Component {
         e.preventDefault();
 
         const id = this.props.match.params.id;
-        const { name, email, nic, mobileNo, designation, department } = this.state;
+        const { empNo, name, email, nic, mobileNo, designation, department } = this.state;
 
         const data = {
+            empNo:empNo,
             name: name,
             email: email,
             nic: nic,
@@ -53,6 +55,7 @@ export default class UpdateEmployee extends Component {
                 });
                 this.setState(
                     {
+                        empNo: "",
                         name: "",
                         email: "",
                         nic: "",
@@ -70,13 +73,13 @@ export default class UpdateEmployee extends Component {
         axios.get(`http://localhost:8000/employee/${id}`).then((res) => {
             if (res.data.success) {
                 this.setState({
+                    empNo: res.data.employee.empNo,
                     name: res.data.employee.name,
                     email: res.data.employee.email,
                     nic: res.data.employee.nic,
                     mobileNo: res.data.employee.mobileNo,
                     designation: res.data.employee.designation,
                     department: res.data.employee.department,
-
                 });
                 console.log(this.state.employee);
             }
@@ -105,6 +108,19 @@ export default class UpdateEmployee extends Component {
                 <div className="col-3" />
                 <div className="col-6 shadowBox" >
                     <form className="needs-validation" noValidate>
+
+                        <div className="form-group" style={{ marginBottom: '15px' }}>
+                            <label style={{ marginBottom: '5px' }}>Employee No</label>
+                            <input type="text"
+                                className="form-control"
+                                minLength="4"
+                                maxLength="5"
+                                name="empNo"
+                                placeholder="Enter Employee Number"
+                                value={this.state.empNo}
+                                onChange={this.handleInputChange} />
+                        </div>
+
                         <div className="form-group" style={{ marginBottom: '15px' }}>
                             <label style={{ marginBottom: '5px' }}>Employee Name</label>
                             <input type="text"
