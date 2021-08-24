@@ -80,7 +80,6 @@ const AddSupplier = () => {
 					</div>
 				<hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
 				</div>   
-			</div>
 			<div className="row">
 				<div className="col-2" />
 					<div className="col-8 shadowBox" >
@@ -214,6 +213,7 @@ const AddSupplier = () => {
 						</form>
 					</div>
 				<div className="col-2" />
+			</div>
 			</div>
 		</>
 	);

@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddSupplierOrder = () => {
 	const [suppliers, setSuppliers] = useState([]);
@@ -15,7 +16,6 @@ const AddSupplierOrder = () => {
 		unitPrice: '',
 		date: ''
 	});
-
 	const {
 		supplierId,
 		supplierOrderId,
@@ -112,30 +112,22 @@ const AddSupplierOrder = () => {
 	};
 	return (
 		<>
-			<div className='jumbotron text-center py-4  mb-5 page-jumbotron'>
-				<h1 className='display-4 fw-bold'>Add New Supplier Order</h1>
-				<div className='container'>
-					<nav aria-label='breadcrumb'>
-						<ol className='breadcrumb'>
-							<li className='breadcrumb-item'>
-								<Link
-									to='/supplier-orders'
-									className='no-decoration'>
-									View Supplier orders
-								</Link>
-							</li>
-							<li
-								className='breadcrumb-item active'
-								aria-current='page'>
-								Add Supplier Order
-							</li>
-						</ol>
-					</nav>
+			<div className="container containerTop">
+				<div className="row">
+					<div className="col position-relative link">
+						<p><Link to="/supplier">Supplier Management</Link> {'>'} <Link to="/supplier-orders">Supplier order Details</Link> {'>'} Add Supplier Order</p>
+					</div>
 				</div>
-			</div>
-			<div className='container mb-5'>
-				<div className='row justify-content-center'>
-					<div className='col-md-8 p-5 form-background'>
+				<div className="row">
+					<div className="col-9 position-relative">
+						<h1 className='display-5 fw-bold'>Add New Supplier</h1>
+						< ToastContainer />
+					</div>
+					<hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
+				</div>
+				<div className="row">
+					<div className="col-2" />
+					<div className="col-8 shadowBox" >
 						{isLoading ? (
 							<div className='row text-center'>
 								<Loader
@@ -162,7 +154,6 @@ const AddSupplierOrder = () => {
 											required
 										/>
 									</div>
-
 									<div className='form-group col-md-6'>
 										<label htmlFor='supplierOrderId'>
 											Order Id
@@ -178,6 +169,7 @@ const AddSupplierOrder = () => {
 										/>
 									</div>
 								</div>
+
 								<div className='row'>
 									<div className='form-group col-md-6'>
 										<label htmlFor='supplyItem'>
@@ -206,6 +198,7 @@ const AddSupplierOrder = () => {
 										/>
 									</div>
 								</div>
+
 								<div className='row'>
 									<div className='form-group col-md-6'>
 										<label htmlFor='unitPrice'>
@@ -236,24 +229,29 @@ const AddSupplierOrder = () => {
 									</div>
 								</div>
 
-								<div className='form-group'>
-									<label htmlFor='supplyItem'>Date</label>
-									<input
-										type='date'
-										className='form-control'
-										name='date'
-										placeholder='2021-04-16'
-										value={date}
-										onChange={handleChange}
-										required
-									/>
+								<div className="row">
+									<div className='form-group'>
+										<label htmlFor='supplyItem'>Date</label>
+										<input
+											type='date'
+											className='form-control'
+											name='date'
+											placeholder='2021-04-16'
+											value={date}
+											onChange={handleChange}
+											required
+										/>
+									</div>
 								</div>
 
-								<button
-									type='submit'
-									className='btn btn-primary mt-5 w-100 float-end'>
-									Add Supplier Order
-								</button>
+								<div className="row">
+									<div className="col-4" />
+									<div className="col-4">
+										<button type='submit' className='btn btn-primary sub_btn'>Add Supplier Order</button>
+									</div>
+									<div className="col-4" />
+								</div>
+
 							</form>
 						)}
 					</div>

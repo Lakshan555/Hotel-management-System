@@ -106,12 +106,11 @@ const ViewSuppliers = () => {
 								<Link to="/email" type="button" class="btn button_add2"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Send Email</Link><br /><br />
 							</div>
 							<div className="col-3 buttons2">
-								<Link onClick={downloadReport} class="button_pdf"  ><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
+								<Link onClick={downloadReport} class="button_pdf"  style={{marginLeft:'40px'}}><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
 							</div>
 							<div className="col-2 buttons">
-								<Link to="/supplier-orders" type="button" class="btn button_add2"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;supplier-orders</Link><br /><br />
+								<Link to="/supplier-orders" type="button" class="btn button_add2" style={{paddingLeft:'10px', marginRight:'10px'}}><i class="fas fa-truck"></i>&nbsp;&nbsp;supplier-orders</Link><br /><br />
 							</div>
-							<div className="col-2" />
 							<div className="col-3 search position-relative" style={{ marginTop: '20px' }}>
 								<i className="fa fa-search"></i> <input className="form-control" type="Search" placeholder="Search a Supplier" name="searchQuery" onChange={search} />
 							</div>
