@@ -9,7 +9,7 @@ import UpdateEmployee from './Components/Employee/UpdateEmployee';
 
 
 import AttendHome from './Components/EmployeeAttendance/AttendHome';
-import SendEmail from './Components/EmployeeAttendance/SendEmail';
+
 
 
 import ViewSuppliers from './Components/Supplier/ViewSuppliers';
@@ -20,10 +20,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-
-
-
-
+import ViewSupplierOrders from './Components/SupplierOrder/ViewSupplierOrders';
+import AddSupplierOrder from './Components/SupplierOrder/AddSupplierOrder';
+import SendEmail from './Components/SupplierOrder/SendEmail';
 
 export default class App extends Component {
   render() {
@@ -56,7 +55,12 @@ export default class App extends Component {
           </Route>
          
           <Route path="/attend_home" component={AttendHome}></Route>
-
+          <Route exact path='/supplier-orders'>
+            <ViewSupplierOrders />
+          </Route>
+          <Route exact path='/new-supplier-order'>
+            <AddSupplierOrder />
+          </Route>
 
 
        
