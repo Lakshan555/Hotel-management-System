@@ -24,6 +24,12 @@ import ViewSupplierOrders from './Components/SupplierOrder/ViewSupplierOrders';
 import AddSupplierOrder from './Components/SupplierOrder/AddSupplierOrder';
 import SendEmail from './Components/SupplierOrder/SendEmail';
 
+
+import ViewStock from './Components/Stock/ViewStocks';
+import AddStock from './Components/Stock/AddStock';
+import UpdateStock from './Components/Stock/UpdateStock';
+
+
 export default class App extends Component {
   render() {
     return (
@@ -61,8 +67,17 @@ export default class App extends Component {
           <Route exact path='/new-supplier-order'>
             <AddSupplierOrder />
           </Route>
-
-
+          
+          {/*Stock*/}
+          <Route exact path='/stock'>
+            <ViewStock />
+          </Route>
+          <Route exact path='/add-new-stock'>
+            <AddStock />
+          </Route>
+          <Route exact path='/update-stock/:id'>
+            <UpdateStock />
+          </Route>
        
         </div>
        
