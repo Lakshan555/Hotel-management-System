@@ -19,16 +19,8 @@ const addStock = async (req, res, next) => {
 			$or: [
 				{
 					itemID: itemID.toUpperCase()
-				},
-				{
-					supplierId: supplierId
-				},
-				{
-					itemName: itemName
 				}
-				,{
-					date: date
-				}
+				
 			]
 		});
 
@@ -162,6 +154,7 @@ const updateStock = async (req, res, next) => {
 };
 
 const deleteStock = async (req, res, next) => {
+	
 	const { id } = req.body;
 	try {
 		let stock = await Stock.findOne({ itemID: id });
@@ -179,12 +172,14 @@ const deleteStock = async (req, res, next) => {
 		return res
 			.status(404)
 			.json({ message: 'Stock successfully removed ' });
+			
 	} catch (err) {
 		return res.status(500).json({
 			message:
 				'Server error while deleting the stock, Please try again'
 		});
 	}
+	
 };
 
 exports.addStock = addStock;
