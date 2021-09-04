@@ -35,7 +35,7 @@ export default class ViewEvent extends Component {
     doc.setFontSize(15);
 
     const title = "Wedding Details";
-    const headers = [['Booking ID', 'Groom"s Name', 'Bride Name', 'Wedding Date', 'Hall Type', 'No Of Guest' ,'Per Head Cost','Total Cost']];
+    const headers = [['Booking ID', 'Groom"s Name', 'Bride Name', 'Wedding Date', 'Hall Type', 'No Of Guests' ,'Per Head Cost','Total Cost']];
 
     const data = this.state.event.map(elt => [elt.Bid, elt.Gname,elt.Bname, elt.wDate, elt.hType, elt.guest, elt.cost,elt.guest * elt.cost]);
 
@@ -121,7 +121,8 @@ export default class ViewEvent extends Component {
           <div className="col-12">
             <div className="row">
               <div className="col position-relative link">
-                <p>View Weddings</p>
+              <p><Link to="/event_Home">Weddings</Link> {'>'} View Weddings </p>
+                
               </div>
             </div>
             <div className="row">
@@ -158,9 +159,9 @@ export default class ViewEvent extends Component {
                         <th scope="col">Bride's Name</th>
                         <th scope="col">Wedding Date</th>
                         <th scope="col">Hall Type</th>
-                        <th scope="col">No of Guest</th>
+                        <th scope="col">No of Guests</th>
                         <th scope="col">Head Cost</th>
-                        <th scope="col">Toatl cost</th>
+                        <th scope="col">Total cost</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
