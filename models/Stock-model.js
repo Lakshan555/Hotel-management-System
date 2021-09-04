@@ -9,7 +9,7 @@ const StockSchema = mongoose.Schema({
 	supplierId: {
 		type: String,
 		require: true,
-		unique: true
+		
 	},
 	itemName: {
 		type: String,
