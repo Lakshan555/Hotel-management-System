@@ -28,7 +28,7 @@ import SendEmail from './Components/SupplierOrder/SendEmail';
 import ViewStock from './Components/Stock/ViewStocks';
 import AddStock from './Components/Stock/AddStock';
 import UpdateStock from './Components/Stock/UpdateStock';
-
+import OrderRequest from './Components/Stock/OrderRequest';
 
 export default class App extends Component {
   render() {
@@ -78,7 +78,7 @@ export default class App extends Component {
           <Route exact path='/update-stock/:id'>
             <UpdateStock />
           </Route>
-       
+          <Route path="/order-Request" component={OrderRequest}></Route>
         </div>
        
       
