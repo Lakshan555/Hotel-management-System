@@ -177,7 +177,7 @@ export default class ViewEvent extends Component {
                           <td>{event.cost}</td>
                           <td>{event.guest*event.cost}</td>
                           <td>
-                            <Link to={`/emp_update/${event._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
+                            <Link to={`/event_update/${event._id}`} type="button" class="btn btn-warning" style={{ width: '95px', margin: '2px' }}>
                               <i class="far fa-edit"></i>&nbsp;Edit
                             </Link>&nbsp;&nbsp;
                             <Link to="#" type="button" class="btn btn-danger" onClick={()=>this.onDelete(event._id)}>

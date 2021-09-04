@@ -32,6 +32,7 @@ import OrderRequest from './Components/Stock/OrderRequest';
 
 import AddEvent from './Components/Event/AddEvent';
 import ViewEvent from './Components/Event/ViewEvent';
+import UpdateEvent from './Components/Event/UpdateEvent';
 
 export default class App extends Component {
   render() {
@@ -87,6 +88,7 @@ export default class App extends Component {
          {/*Event*/}
          <Route path="/Event-Add" exact component={AddEvent}></Route>
          <Route path="/get_event" exact component={ViewEvent}></Route>
+         <Route path="/event_update/:id" exact component={UpdateEvent}></Route>
       
       </BrowserRouter>
       
