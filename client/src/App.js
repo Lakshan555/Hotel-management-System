@@ -30,6 +30,9 @@ import AddStock from './Components/Stock/AddStock';
 import UpdateStock from './Components/Stock/UpdateStock';
 import OrderRequest from './Components/Stock/OrderRequest';
 
+import AddEvent from './Components/Event/AddEvent';
+import ViewEvent from './Components/Event/ViewEvent';
+
 export default class App extends Component {
   render() {
     return (
@@ -80,7 +83,10 @@ export default class App extends Component {
           </Route>
           <Route path="/order-Request" component={OrderRequest}></Route>
         </div>
-       
+
+         {/*Event*/}
+         <Route path="/Event-Add" exact component={AddEvent}></Route>
+         <Route path="/get_event" exact component={ViewEvent}></Route>
       
       </BrowserRouter>
       

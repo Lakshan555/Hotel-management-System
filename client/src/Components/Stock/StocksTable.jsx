@@ -23,6 +23,7 @@ const StocksTable = ({ stocks, deleted, setDeleted }) => {
 		  if (response.status === 200) {
 			setDeleted(deleted + 1);
 			toast(response.data.message, { type: toast.TYPE.SUCCESS });
+			window.location('/stock')
 		  }
 		} catch (error) {
 		  toast(error.response.data.message, { type: toast.TYPE.ERROR });

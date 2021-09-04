@@ -20,6 +20,8 @@ const attendRoutes = require('./routes/attends');
 
 const StockRoutes = require('./routes/Stock-routes');
 
+const eventRoutes = require('./routes/Events');
+
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -30,9 +32,10 @@ app.use('/api/supplier', supplierRoutes);
 app.use('/api/supplierorder', SupplierOrderRoutes);
 app.use(attendRoutes);
 app.use('/api/stock', StockRoutes);
+app.use(eventRoutes);
 
 const PORT = 8000;// sever port
-const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/highGarden_Db?retryWrites=true&w=majority`;
+const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/HTM_Db?retryWrites=true&w=majority`;
 
 //crate options
 mongoose.connect(DB_URL,{
