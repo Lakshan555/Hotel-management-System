@@ -43,7 +43,7 @@ const StocksTable = ({ stocks, deleted, setDeleted }) => {
 									<th scope='col'>Unit Price</th>
 									<th scope='col'>QTY</th>
 									<th scope='col'>Total price</th>
-									<th scope='col'>Date</th>
+									<th scope='col'>Arrived Date</th>
 									<th scope='col'>Description</th>
 									<th scope='col'>Manage</th>
 								</tr>

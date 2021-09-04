@@ -109,7 +109,7 @@ const ViewSuppliers = () => {
 								<Link onClick={downloadReport} class="btn button_add2" style={{width:'190px'}}><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />
 							</div>
 							<div className="col-2 buttons">
-								<Link to="/itenName" type="button" class="btn button_pdf" ><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Order Request</Link><br /><br />
+								<Link to="/order-Request" type="button" class="btn button_pdf" ><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Order Request</Link><br /><br />
 							</div>
 							{/* <div className="col-2 buttons2">
 								<Link onClick={downloadReport} class="button_pdf"  style={{marginLeft:'2px'}}><i class="fas fa-download"></i>&nbsp;&nbsp;Download Report</Link><br /><br />

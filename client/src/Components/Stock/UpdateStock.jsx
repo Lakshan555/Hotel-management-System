@@ -96,12 +96,12 @@ const UpdateSupplier = () => {
 		<div className="container containerTop">
 			<div className="row">
 				<div className="col position-relative link">
-					<p><Link to="/stock">Stock Management</Link> {'>'} Add New Stock</p>
+					<p><Link to="/stock">Stock Management</Link> {'>'} Update Stock</p>
 				</div>
 			</div>
 			<div className="row">
 				<div className="col-9 position-relative">
-					<h1 className='display-5 fw-bold'>Add New Stock</h1>
+					<h1 className='display-5 fw-bold'>Update Stock</h1>
 					< ToastContainer />
 				</div>
 			<hr className="hr" style={{ height: '2px', color: '#0a90e8' }} />
@@ -161,7 +161,7 @@ const UpdateSupplier = () => {
 							</div>
 							<div className="col-6">
 								<div className='form-group '>
-									<label htmlFor='date'>Date</label>
+									<label htmlFor='date'>Pick Date</label>
 									<input
 										type='date'
 										className='form-control'
@@ -239,7 +239,7 @@ const UpdateSupplier = () => {
 						<div className="row">
 							<div className="col-4" />
 							<div className="col-4">									
-								<button type='submit' className='btn btn-primary sub_btn'>Add stock</button>
+								<button type='submit' className='btn btn-primary sub_btn'>Update stock</button>
 							</div>
 							<div className="col-4" />
 						</div>
