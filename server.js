@@ -23,6 +23,8 @@ const StockRoutes = require('./routes/Stock-routes');
 const eventRoutes = require('./routes/Events');
 //Customer routes
 const customerRoutes = require('./routes/Customer');
+//Customer Rooms
+const roomRoutes = require('./routes/Rooms');
 
 //app middleware
 app.use(bodyParser.json());
