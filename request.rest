@@ -4,16 +4,17 @@ GET http://localhost:8000/room
 GET http://localhost:8000/event/2
 
 ###
-POST http://localhost:8000/customer/add
+POST http://localhost:8000/room/add
 content-Type: application/json
 
 {
-    "customerId":"p6sss",
-    "firstName":"888",
-     "lastName":"888",
-        "address":"888",
-        "phoneNo":"0444",
-         "email":"ss"
+    "availability": "Available",
+      "_id": "614039cb367f063ca436fb09",
+      "roomNo": "RID0001",
+      "type": "Single Economy ",
+      "noOfBeds": 0,
+      "price": 15000,
+      "description": "Test1",
 
 
 }
