@@ -15,12 +15,14 @@ const employeeRoutes = require('./routes/employees');
 const supplierRoutes = require('./routes/Supplier-routes');
 //supplier orders route
 const SupplierOrderRoutes = require('./routes/Supplier-order-routes');
-
+//attends route
 const attendRoutes = require('./routes/attends');
-
+//Stock-routes 
 const StockRoutes = require('./routes/Stock-routes');
-
+//Events  routes
 const eventRoutes = require('./routes/Events');
+//Customer routes
+const customerRoutes = require('./routes/Customer');
 
 //app middleware
 app.use(bodyParser.json());
