@@ -1,0 +1,35 @@
+GET http://localhost:8000/customer
+
+###
+GET http://localhost:8000/event/2
+
+###
+POST http://localhost:8000/customer/add
+content-Type: application/json
+
+{
+    "customerId":"p6sss",
+    "firstName":"888",
+     "lastName":"888",
+        "address":"888",
+        "phoneNo":"0444",
+         "email":"ss"
+
+
+}
+
+###
+PUT   http://localhost:8000/room/update/614d7a5763c09b6100f545de
+content-Type: application/json
+
+{
+     "type":"p6",
+    "roomNo":888,
+     "noOfBeds":888,
+        "price":888,
+        "description":"ss",
+         "availability":"s1"
+}
+
+###
+DELETE  http://localhost:8000/customer/delete/614d7a5763c09b6100f545de
