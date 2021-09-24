@@ -35,6 +35,7 @@ app.use('/api/supplierorder', SupplierOrderRoutes);
 app.use(attendRoutes);
 app.use('/api/stock', StockRoutes);
 app.use(eventRoutes);
+app.use(customerRoutes);
 
 const PORT = 8000;// sever port
 const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/HTM_Db?retryWrites=true&w=majority`;
