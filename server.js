@@ -23,6 +23,8 @@ const StockRoutes = require('./routes/Stock-routes');
 const eventRoutes = require('./routes/Events');
 //Customer routes
 const customerRoutes = require('./routes/Customer');
+//Customer Rooms
+const roomRoutes = require('./routes/Rooms');
 
 //app middleware
 app.use(bodyParser.json());
@@ -36,6 +38,7 @@ app.use(attendRoutes);
 app.use('/api/stock', StockRoutes);
 app.use(eventRoutes);
 app.use(customerRoutes);
+app.use(roomRoutes);
 
 const PORT = 8000;// sever port
 const DB_URL = `mongodb+srv://Admin:admin321@project.0tb9c.mongodb.net/HTM_Db?retryWrites=true&w=majority`;

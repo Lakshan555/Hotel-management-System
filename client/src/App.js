@@ -39,6 +39,11 @@ import AddCustomer from './Components/Customer/AddCustomer';
 import CustomerHome from './Components/Customer/CustomerHome';
 import UpdateCustomer from './Components/Customer/UpdateCustomer';
 
+
+import AddRoom from './Components/Room/AddRoom';
+import RoomHome from './Components/Room/RoomHome';
+import UpdateRoom from './Components/Room/UpdateRoom';
+
 export default class App extends Component {
   render() {
     return (
@@ -100,6 +105,11 @@ export default class App extends Component {
           <Route path="/Customer-Add" exact component={AddCustomer}></Route>
           <Route path="/Customer_Home" exact component={CustomerHome}></Route>
           <Route path="/Customer_update/:id" exact component={UpdateCustomer}></Route>
+
+           {/*Room*/}
+          <Route path="/Room-Add" exact component={AddRoom}></Route>
+          <Route path="/Room_Home" exact component={RoomHome}></Route>
+          <Route path="/Room_update/:id" exact component={UpdateRoom}></Route>
 
         </div>
 
