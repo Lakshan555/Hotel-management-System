@@ -1,4 +1,4 @@
-GET http://localhost:8000/customer
+GET http://localhost:8000/room
 
 ###
 GET http://localhost:8000/event/2
