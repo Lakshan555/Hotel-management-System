@@ -35,14 +35,18 @@ import ViewEvent from './Components/Event/ViewEvent';
 import UpdateEvent from './Components/Event/UpdateEvent';
 import EventHome from './Components/Event/EventHome';
 
+import AddCustomer from './Components/Customer/AddCustomer';
+import CustomerHome from './Components/Customer/CustomerHome';
+import UpdateCustomer from './Components/Customer/UpdateCustomer';
+
 export default class App extends Component {
   render() {
     return (
-      
+
       <BrowserRouter>
 
         <NavBar />
-        
+
         <ToastContainer />
         <div className="container">
 
@@ -50,10 +54,10 @@ export default class App extends Component {
           <Route path="/get_Emp" exact component={Home}></Route>
           <Route path="/emp_add" exact component={AddEmployee}></Route>
           <Route path="/emp_update/:id" exact component={UpdateEmployee}></Route>
-         
 
 
-           {/*Supplier*/}
+
+          {/*Supplier*/}
           <Route path="/email" component={SendEmail}></Route>
           <Route exact path='/supplier'>
             <ViewSuppliers />
@@ -64,7 +68,7 @@ export default class App extends Component {
           <Route exact path='/update-supplier/:id'>
             <UpdateSupplier />
           </Route>
-         
+
           <Route path="/attend_home" component={AttendHome}></Route>
           <Route exact path='/supplier-orders'>
             <ViewSupplierOrders />
@@ -72,7 +76,7 @@ export default class App extends Component {
           <Route exact path='/new-supplier-order'>
             <AddSupplierOrder />
           </Route>
-          
+
           {/*Stock*/}
           <Route exact path='/stock'>
             <ViewStock />
@@ -84,16 +88,24 @@ export default class App extends Component {
             <UpdateStock />
           </Route>
           <Route path="/order-Request" component={OrderRequest}></Route>
+
+
+          {/*Event*/}
+          <Route path="/Event-Add" exact component={AddEvent}></Route>
+          <Route path="/get_event" exact component={ViewEvent}></Route>
+          <Route path="/event_update/:id" exact component={UpdateEvent}></Route>
+          <Route path="/event_Home" exact component={EventHome}></Route>
+
+          {/*Customer*/}
+          <Route path="/Customer-Add" exact component={AddCustomer}></Route>
+          <Route path="/Customer_Home" exact component={CustomerHome}></Route>
+          <Route path="/Customer_update/:id" exact component={UpdateCustomer}></Route>
+
         </div>
 
-         {/*Event*/}
-         <Route path="/Event-Add" exact component={AddEvent}></Route>
-         <Route path="/get_event" exact component={ViewEvent}></Route>
-         <Route path="/event_update/:id" exact component={UpdateEvent}></Route>
-         <Route path="/event_Home" exact component={EventHome}></Route>
-      
+
       </BrowserRouter>
-      
+
     )
   }
 }

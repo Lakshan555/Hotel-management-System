@@ -35,7 +35,7 @@ function Navbar() {
         <img className="logo-image" style={{ maxWidth: '80px', marginRight:'320px' }} src="../images/newlogo.png" />
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/Customer_Home' className='nav-links' onClick={closeMobileMenu}>
               Customer
               </Link>
             </li>
